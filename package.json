@@ -1,0 +1,16 @@
+{
+  "name": "text-editing-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.9.0"
+  },
+  "dependencies": {
+    "ckeditor4": "^4.18.0"
+  }
+}
