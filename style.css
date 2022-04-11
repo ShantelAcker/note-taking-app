@@ -1,11 +1,24 @@
+/* universal styles*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
 }
 
+/* notes styling */
 .note {
   border: 1px solid black;
+}
+
+/* editor styling */
+#editor {
+  display: none;
 }
