@@ -16,12 +16,24 @@
   margin-top: 60px;
 }
 
-/* notes styling */
-.note {
-  border: 1px solid black;
-}
-
 /* editor styling */
 #editor-container {
   display: none;
+}
+
+/*  notes styling */
+.notes-group-container {
+  max-width: max-content;
+}
+
+.single-note-container {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* delete button styling */
+.delete-button {
+  cursor: pointer;
 }

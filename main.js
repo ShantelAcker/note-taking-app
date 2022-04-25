@@ -4,7 +4,7 @@ import { notesList } from "./notesList";
 import { v4 as uuidv4 } from "uuid";
 
 // accessing html elements
-const notesContainer = document.getElementById("notes-container");
+const notesContainer = document.getElementById("notes-group-container");
 const entryButton = document.getElementById("entry-button");
 const editorContainer = document.getElementById("editor-container");
 const textEditor = document.getElementById("text-editor");
@@ -13,9 +13,14 @@ const submitButton = document.getElementById("submit-button");
 // a function to format each notesList item for display
 function noteFormat(note) {
   return `
-    <div class="note">
-      <p>${note.entryText}</p>
-      <p>${note.date} ${note.time}</p>
+    <div class="single-note-container">
+      <div class="note-text-container">
+        <p>${note.entryText}</p>
+        <p>${note.date} ${note.time}</p>
+      </div>
+      <div class="delete-button-container">
+        <i id="delete-button" class="fa-solid fa-trash-can delete-button"></i>
+      </div>
     </div>
   `;
 }
