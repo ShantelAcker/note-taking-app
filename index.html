@@ -9,11 +9,13 @@
   <body>
     <div id="app">
       <button id="entry-button">New Entry</button>
-      <div id="editor"><textarea></textarea></div>
+      <div id="editor-container">
+        <textarea id="text-editor"></textarea>
+        <button id="submit-button">Submit</button>
+      </div>
       <h1>Notes</h1>
       <div id="notes"></div>
     </div>
-    <script src="./node_modules/ckeditor4/ckeditor.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
