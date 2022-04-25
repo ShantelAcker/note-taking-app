@@ -1,6 +1,7 @@
 // imports
 import "./style.css";
 import { notesList } from "./notesList";
+import { v4 as uuidv4 } from "uuid";
 
 // accessing html elements
 const notesContainer = document.getElementById("notes-container");
@@ -20,7 +21,7 @@ function noteFormat(note) {
 }
 
 // at launch, map through each element in the notesList array
-// and update the HTML
+// and update the innerHTML
 // the .join removes the comma being added between each item
 notesContainer.innerHTML = notesList.map(noteFormat).join("");
 
@@ -61,14 +62,11 @@ function updateEntryButton() {
 
 submitButton.addEventListener("click", submitEntry);
 
-// format and add a new note to the notesList array
-// then update the notesContainer innerHTML an close the text editor again
+// a function that formats and adds a new note to the notesList array
+// then updates the notesContainer innerHTML and closes the text editor again
 function submitEntry() {
-  // this works for now, but will need different implementation
-  // once the ability to delete notes gets added
-  let noteID = notesList[0].id + 1;
   notesList.unshift({
-    id: noteID,
+    id: uuidv4(),
     date: currentFullDate,
     time: currentTime,
     entryText: textEditor.value,
@@ -78,4 +76,6 @@ function submitEntry() {
   textEditor.value = "";
   entryButton.innerText = "New Entry";
   editorContainer.style.display = "none";
+
+  console.log(notesList[0]);
 }
