@@ -55,16 +55,13 @@
   border-radius: 5px;
   box-shadow: 10px 10px 25px -10px rgba(180, 180, 180, 1);
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   margin: auto auto 1em auto;
-  max-width: 40%;
+  width: 40%;
   min-height: 10vh;
   padding: 1em;
-}
-
-.delete-button-container {
-  flex-grow: 1;
 }
 
 .note-text-container > *,
@@ -83,13 +80,26 @@
   font-weight: bold;
 }
 
-/* delete button styling */
-.delete-button {
-  visibility: hidden;
+/* options buttons container styling */
+.option-buttons-container > * {
+  margin-top: 1em;
+  text-align: right;
+}
+
+.edit-button {
+  opacity: 0.5;
   cursor: pointer;
 }
 
-/* show the delete button when hovering over its respective note contatiner */
-.single-note-container:hover > .delete-button-container > .delete-button {
-  visibility: visible;
+.edit-button:hover {
+  opacity: 1;
+}
+
+.delete-button {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  opacity: 1;
 }
