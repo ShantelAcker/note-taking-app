@@ -10,10 +10,15 @@ const editorContainer = document.getElementById("editor-container");
 const textEditor = document.getElementById("text-editor");
 const submitButton = document.getElementById("submit-button");
 
+// event listeners
+entryButton.addEventListener("click", updateEntryButton);
+submitButton.addEventListener("click", submitEntry);
+notesContainer.addEventListener("click", deleteNote);
+
 // a function to format each notesList item for display
 function noteFormat(note) {
   return `
-    <div class="single-note-container">
+    <div class="single-note-container" id=${note.id}>
       <div class="note-text-container">
         <p>${note.entryText}</p>
         <p>${note.date} ${note.time}</p>
@@ -27,7 +32,7 @@ function noteFormat(note) {
 
 // at launch, map through each element in the notesList array
 // and update the innerHTML
-// the .join removes the comma being added between each item
+// .join removes the comma being added between each item
 notesContainer.innerHTML = notesList.map(noteFormat).join("");
 
 // global variables for the date and time for later
@@ -49,8 +54,6 @@ function formatDate() {
 }
 
 // switch button text between Cancel and New Entry
-entryButton.addEventListener("click", updateEntryButton);
-
 function updateEntryButton() {
   if (entryButton.innerText === "New Entry") {
     entryButton.innerText = "Cancel";
@@ -64,8 +67,6 @@ function updateEntryButton() {
     editorContainer.style.display = "none";
   }
 }
-
-submitButton.addEventListener("click", submitEntry);
 
 // a function that formats and adds a new note to the notesList array
 // then updates the notesContainer innerHTML and closes the text editor again
@@ -81,6 +82,18 @@ function submitEntry() {
   textEditor.value = "";
   entryButton.innerText = "New Entry";
   editorContainer.style.display = "none";
+}
 
-  console.log(notesList[0]);
+// a function that finds the id associated with the trash can clicked
+// and deletes that element and updates the html accordingly
+function deleteNote(event) {
+  if (event.target.id === "delete-button") {
+    let noteId = event.target.parentElement.parentElement.id;
+    // find the index of the object that matches the id of the element we want to delete
+    let noteIndex = notesList.findIndex((element) => {
+      return element.id === noteId;
+    });
+    notesList.splice(noteIndex, 1);
+    notesContainer.innerHTML = notesList.map(noteFormat).join("");
+  }
 }
