@@ -3,7 +3,7 @@ import "./style.css";
 import { notesList } from "./notesList";
 import { v4 as uuidv4 } from "uuid";
 
-// accessing html elements
+// selectors
 const notesContainer = document.getElementById("notes-group-container");
 const entryButton = document.getElementById("entry-button");
 const editorContainer = document.getElementById("editor-container");
@@ -21,7 +21,7 @@ function noteFormat(note) {
     <div class="single-note-container" id=${note.id}>
       <div class="note-text-container">
         <p>${note.entryText}</p>
-        <p>${note.date} ${note.time}</p>
+        <p class="date-time">${note.date} ${note.time}</p>
       </div>
       <div class="delete-button-container">
         <i id="delete-button" class="fa-solid fa-trash-can delete-button"></i>
@@ -53,11 +53,11 @@ function formatDate() {
   }`;
 }
 
-// switch button text between Cancel and New Entry
+// a function that switches top button text between Cancel and New Entry
 function updateEntryButton() {
   if (entryButton.innerText === "New Entry") {
     entryButton.innerText = "Cancel";
-    editorContainer.style.display = "block";
+    editorContainer.style.display = "flex";
     // set the date and time as soon as the button is clicked
     // to be used later
     formatDate();

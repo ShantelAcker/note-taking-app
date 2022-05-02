@@ -8,22 +8,28 @@
       src="https://kit.fontawesome.com/779f1c7e95.js"
       crossorigin="anonymous"
     ></script>
-    <title>WebNotes</title>
+    <title>webnotes</title>
   </head>
   <body>
     <div id="app">
-      <button id="entry-button">New Entry</button>
-      <div id="editor-container">
-        <textarea id="text-editor"></textarea>
-        <button id="submit-button">Submit</button>
+      <header class="header">
+        <h1 class="app-title">webnotes</h1>
+      </header>
+      <button id="entry-button" class="app-button entry-button">
+        New Entry
+      </button>
+      <div id="editor-container" class="editor-container">
+        <textarea
+          id="text-editor"
+          class="text-editor"
+          placeholder="enter your note..."
+        ></textarea>
+        <button id="submit-button" class="app-button submit-button">
+          Submit
+        </button>
       </div>
-      <h1>Notes</h1>
       <div id="notes-group-container" class="notes-group-container"></div>
     </div>
-    <!-- <script src="./node_modules/ckeditor4/ckeditor.js"></script>
-    <script>
-      CKEDITOR.replace("text-editor");
-    </script> -->
     <script type="module" src="/main.js"></script>
   </body>
 </html>
