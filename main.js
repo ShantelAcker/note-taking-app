@@ -2,6 +2,7 @@
 import "./style.css";
 import { notesList } from "./notesList";
 import { v4 as uuidv4 } from "uuid";
+import { markdown } from "markdown";
 
 // selectors
 const notesContainer = document.getElementById("notes-group-container");
@@ -20,7 +21,7 @@ function noteFormat(note) {
   return `
     <div class="single-note-container" id=${note.id}>
       <div class="note-text-container">
-        <p>${note.entryText}</p>
+        <p>${markdown.toHTML(note.entryText)}</p>
         <p class="date-time">${note.date} ${note.time}</p>
       </div>
       <div class="delete-button-container">
