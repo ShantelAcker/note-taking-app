@@ -67,8 +67,13 @@
   flex-grow: 1;
 }
 
-.note-text-container > p {
+.note-text-container > *,
+.note-text-container > * > * {
   text-align: left;
+}
+
+.note-text-container li {
+  list-style-position: inside;
 }
 
 .date-time {
