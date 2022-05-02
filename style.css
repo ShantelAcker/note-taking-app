@@ -35,5 +35,11 @@
 
 /* delete button styling */
 .delete-button {
+  visibility: hidden;
   cursor: pointer;
+}
+
+/* show the delete button when hovering over its respective note contatiner */
+.single-note-container:hover > .delete-button-container > .delete-button {
+  visibility: visible;
 }
