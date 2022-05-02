@@ -1,11 +1,11 @@
 /* imports */
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
 /* universal styles*/
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 #app {
@@ -13,24 +13,69 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 2em;
+}
+
+.header {
+  margin-bottom: 1em;
+}
+
+.header > h1 {
+  text-align: left;
+  padding-left: 2em;
 }
 
 /* editor styling */
-#editor-container {
+.editor-container {
   display: none;
+  flex-direction: column;
+}
+
+.text-editor {
+  text-align: left;
+  resize: none;
+  width: 40vw;
+  height: 35vh;
+  padding: 1em;
+  margin: 1em auto 2em auto;
+  font-family: "IBM Plex Mono", Courier, monospace;
+}
+
+.app-button {
+  width: 40vw;
+  margin: auto auto 1em auto;
+  font-size: 1.5em;
+  padding: 0.2em 0;
+  font-family: "IBM Plex Mono", Courier, monospace;
 }
 
 /*  notes styling */
-.notes-group-container {
-  max-width: max-content;
+.single-note-container {
+  border: 1px solid rgba(180, 180, 180, 0.1);
+  border-radius: 5px;
+  box-shadow: 10px 10px 25px -10px rgba(180, 180, 180, 1);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: auto auto 1em auto;
+  max-width: 40%;
+  min-height: 10vh;
+  padding: 1em;
 }
 
-.single-note-container {
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.delete-button-container {
+  flex-grow: 1;
+}
+
+.note-text-container > p {
+  text-align: left;
+}
+
+.date-time {
+  font-style: italic;
+  margin-top: 1em;
+  font-size: 0.7em;
+  font-weight: bold;
 }
 
 /* delete button styling */
