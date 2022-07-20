@@ -25,10 +25,8 @@ body {
   margin-bottom: 1em;
 }
 
-.header > h1 {
-  text-align: left;
-  padding-left: 2em;
-}
+/* .header > h1 {
+} */
 
 /* editor styling */
 .editor-container {
@@ -44,6 +42,9 @@ body {
   padding: 1em;
   margin: 1em auto 2em auto;
   font-family: "IBM Plex Mono", Courier, monospace;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 10px 7px 22px -8px rgba(0, 0, 0, 0.25);
 }
 
 .app-button {
@@ -52,18 +53,25 @@ body {
   font-size: 1.5em;
   padding: 0.2em 0;
   font-family: "IBM Plex Mono", Courier, monospace;
+  font-weight: 600;
   color: #c1c8cf;
   background-color: #050d21;
   border-radius: 5px;
   outline: none;
   border: none;
+  cursor: pointer;
+  box-shadow: 10px 7px 22px -8px rgba(0, 0, 0, 0.25);
+}
+
+.app-button:hover {
+  background-color: #c1c8cf;
+  color: #050d21;
 }
 
 /*  notes styling */
 .single-note-container {
   border: 1px solid rgba(180, 180, 180, 0.1);
   border-radius: 5px;
-  /* box-shadow: 10px 10px 25px -10px rgba(180, 180, 180, 1); */
   box-shadow: 10px 7px 22px -8px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
@@ -81,6 +89,12 @@ body {
   text-align: left;
 }
 
+.note-text-container > * {
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
+/* for markdown bulleted lists */
 .note-text-container li {
   list-style-position: inside;
 }
@@ -88,8 +102,8 @@ body {
 .date-time {
   font-style: italic;
   margin-top: 1em;
-  font-size: 0.7em;
-  font-weight: bold;
+  font-size: 0.9em;
+  font-weight: 600;
 }
 
 /* options buttons container styling */
@@ -117,9 +131,13 @@ body {
 }
 
 /* media queries */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
   .single-note-container,
   .app-button {
-    width: 70%;
+    width: 90%;
+  }
+
+  .text-editor {
+    width: 90%;
   }
 }
