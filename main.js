@@ -39,10 +39,15 @@ function noteFormat(note) {
   `;
 }
 
-// at launch, map through each element in the notesList array
+// a function to map through each element in the notesList array
 // and update the innerHTML
 // .join removes the comma being added between each item
-notesContainer.innerHTML = notesList.map(noteFormat).join("");
+const formatNotesList = function () {
+  notesContainer.innerHTML = notesList.map(noteFormat).join("");
+};
+
+// format notesList at launch
+formatNotesList();
 
 function formatDate() {
   const dateObject = new Date();
@@ -58,6 +63,7 @@ function formatDate() {
   }`;
 }
 
+// a function for resetting the entry ui to default hidden state
 const resetEntryUI = function () {
   textEditor.value = "";
   entryButton.innerText = "New Entry";
@@ -88,7 +94,7 @@ function submitEntry() {
       entryText: textEditor.value,
     });
 
-    notesContainer.innerHTML = notesList.map(noteFormat).join("");
+    formatNotesList();
     resetEntryUI();
   } else if (submitState === "editedEntry") {
     // reset the state
@@ -103,7 +109,7 @@ function submitEntry() {
       entryText: textEditor.value,
     };
 
-    notesContainer.innerHTML = notesList.map(noteFormat).join("");
+    formatNotesList();
     resetEntryUI();
     document.getElementById(`${noteId}`).scrollIntoView();
   }
@@ -119,7 +125,7 @@ function deleteNote(event) {
       return element.id === noteId;
     });
     notesList.splice(noteIndex, 1);
-    notesContainer.innerHTML = notesList.map(noteFormat).join("");
+    formatNotesList();
   }
 }
 
