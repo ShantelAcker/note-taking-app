@@ -58,6 +58,12 @@ function formatDate() {
   }`;
 }
 
+const resetEntryUI = function () {
+  textEditor.value = "";
+  entryButton.innerText = "New Entry";
+  editorContainer.style.display = "none";
+};
+
 // a function that switches top button text between Cancel and New Entry
 function updateEntryButton() {
   if (entryButton.innerText === "New Entry") {
@@ -67,9 +73,7 @@ function updateEntryButton() {
     // to be used later
     formatDate();
   } else {
-    textEditor.value = "";
-    entryButton.innerText = "New Entry";
-    editorContainer.style.display = "none";
+    resetEntryUI();
   }
 }
 
@@ -85,9 +89,7 @@ function submitEntry() {
     });
 
     notesContainer.innerHTML = notesList.map(noteFormat).join("");
-    textEditor.value = "";
-    entryButton.innerText = "New Entry";
-    editorContainer.style.display = "none";
+    resetEntryUI();
   } else if (submitState === "editedEntry") {
     // reset the state
     submitState = "normalEntry";
@@ -102,9 +104,7 @@ function submitEntry() {
     };
 
     notesContainer.innerHTML = notesList.map(noteFormat).join("");
-    textEditor.value = "";
-    entryButton.innerText = "New Entry";
-    editorContainer.style.display = "none";
+    resetEntryUI();
     document.getElementById(`${noteId}`).scrollIntoView();
   }
 }
