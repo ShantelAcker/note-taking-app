@@ -1,6 +1,6 @@
 // imports
 import "./style.css";
-import { notesList } from "./notesList";
+// import { notesList } from "./notesList";
 import { v4 as uuidv4 } from "uuid";
 import { markdown } from "markdown";
 
@@ -46,9 +46,6 @@ const formatNotesList = function () {
   notesContainer.innerHTML = notesList.map(noteFormat).join("");
 };
 
-// format notesList at launch
-formatNotesList();
-
 function formatDate() {
   const dateObject = new Date();
   const currentMonth = dateObject.getMonth() + 1;
@@ -93,7 +90,8 @@ function submitEntry() {
       time: currentTime,
       entryText: textEditor.value,
     });
-
+    // save notesList to local storage before updating html
+    saveNotes();
     formatNotesList();
     resetEntryUI();
   } else if (submitState === "editedEntry") {
@@ -109,6 +107,7 @@ function submitEntry() {
       entryText: textEditor.value,
     };
 
+    saveNotes();
     formatNotesList();
     resetEntryUI();
     document.getElementById(`${noteId}`).scrollIntoView();
@@ -125,6 +124,7 @@ function deleteNote(event) {
       return element.id === noteId;
     });
     notesList.splice(noteIndex, 1);
+    saveNotes();
     formatNotesList();
   }
 }
@@ -151,3 +151,19 @@ function editNote(event) {
     editingObject = { id: noteId };
   }
 }
+
+// local storage functions
+const loadNotes = function () {
+  const notesJSON = localStorage.getItem("NOTES");
+  if (notesJSON == null) return [];
+  return JSON.parse(notesJSON);
+};
+
+// creating notesList in local storage now
+const notesList = loadNotes();
+// format notesList at launch
+formatNotesList();
+
+const saveNotes = function () {
+  localStorage.setItem("NOTES", JSON.stringify(notesList));
+};
